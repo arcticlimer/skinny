@@ -9,17 +9,20 @@ skinny__github() {
   __parse_filename "$1" && \
   __github raw "$1" "$script_path" "$script_name" && \
   echo "skinny: downloaded $script_name"
+  . "$script_path"
 }
 
 skinny__gist() {
   __parse_filename "$1" && \
   __github gist "$1"/raw "$script_path" "$script_name" && \
   echo "skinny: downloaded $script_name"
+  . "$script_path"
 }
 
 skinny__remote() {
   __parse_filename "$1" && \
   curl -sf "$1" -o "$script_path" || echo "could not download $2"
+  . "$script_path"
 }
 
 skinny__clean() {
