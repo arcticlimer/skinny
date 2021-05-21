@@ -12,10 +12,10 @@ export SKINNY_PATH=~/.skinny
 if [ ! -d $SKINNY_PATH ]; then
   mkdir -p $SKINNY_PATH
   curl https://raw.githubusercontent.com/arcticlimer/skinny/master/skinny.sh \
-    -o $SKINNYMAN_PATH/skinny.sh
+    -o $SKINNY_PATH/skinny.sh
 fi
 
-source $SKINNYMAN_PATH/skinny.sh
+source $SKINNY_PATH/skinny.sh
 ```
 
 ## Usage
