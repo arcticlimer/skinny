@@ -1,4 +1,6 @@
-scripts=${SKINNY_PATH-$HOME/.local/share/skinny}/scripts
+skinny_path=${SKINNY_PATH-$HOME/.local/share/skinny}
+scripts="$skinny_path"/scripts
+repos="$skinny_path"/repos
 
 mkdir -p "$scripts"
 
@@ -25,7 +27,17 @@ skinny__remote() {
   . "$script_path"
 }
 
+skinny__git() {
+  repo_name=$(basename $1)
+  repo_path="$repos"/"$repo_name"
+  [ ! -d "$repo_path" ] && \
+    git clone $1 "$repo_path"
+  cwd="$(pwd)"
+  cd "$repo_path" && $2 && cd "$cwd"
+}
+
 skinny__clean() {
+  # TODO: Add option to clean scripts or repositories
   rm "$scripts"/*
 }
 
@@ -47,6 +59,7 @@ skinny() {
 }
 
 __github() {
+  # TODO: Treat curl download errors
   curl -sf https://"$1".githubusercontent.com/"$2" -o "$3" \
     || echo "skinny: could not download $4"
 }

@@ -1,6 +1,6 @@
 # Skinny
 
- A skinny (> 70 LOC) script manager and helper for your shell
+ A skinny (> 80 LOC) script manager and helper for your shell
 
 ## Installation
 Add this to your shell's rc:
@@ -30,6 +30,10 @@ skinny gist junegunn/f4fca918e937e6bf5bad
 skinny github lincheney/fzf-tab-completion/master/bash/fzf-bash-completion.sh
 bind -x '"\t": fzf_bash_completion'
 
+# Download a git repository and execute a custom callback inside it
+base16_load() { eval "$(./profile_helper.sh)" ; }
+skinny git https://github.com/chriskempson/base16-shell base16_load
+
 # You can also specify the commmit hash on the url
 skinny github \
   lincheney/fzf-tab-completion/blob/53eb325f573265a6105c9bd0aa56cd865c4e14b7/bash/fzf-bash-completion.sh
@@ -49,7 +53,8 @@ skinny cmd zoxide && eval "$(zoxide init bash)"
 
 ## Dependencies
   - curl (if you want to use remote scripts)
+  - git (if you want to use git repositories)
 
 ## TODO
-- [ ] Support git repositories
-- [ ] Test support on other shells
+- [x] Support git repositories
+- [ ] Test in other shells
