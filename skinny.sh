@@ -33,7 +33,7 @@ skinny__git() {
   [ ! -d "$repo_path" ] && \
     git clone $1 "$repo_path"
   cwd="$(pwd)"
-  cd "$repo_path" && $2 && cd "$cwd"
+  cd "$repo_path" && $2; cd "$cwd"
 }
 
 skinny__clean() {
