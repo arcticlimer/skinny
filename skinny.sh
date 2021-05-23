@@ -1,4 +1,5 @@
-skinny_path=${SKINNY_PATH-$HOME/.local/share/skinny}
+shell=$(basename $(readlink /proc/$$/exe))
+skinny_path=${SKINNY_PATH-$HOME/.local/share/skinny}/"$shell"
 scripts="$skinny_path"/scripts
 repos="$skinny_path"/repos
 
